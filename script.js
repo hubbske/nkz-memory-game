@@ -11,7 +11,7 @@ let lockBoard = false;
 let firstCard, secondCard;
 let numMatches = 0;
 let numMoves = 0;
-let timeLimit = 30; // 30 seconds time limit
+let timeLimit = 60; // 30 seconds time limit
 let timeRemaining = timeLimit;
 let timer;
 let gameStarted = false;
@@ -21,7 +21,7 @@ function flipCard() {
   if (this === firstCard) return;
 
   flipSound.play(); // Play flip sound effect
-  this.classList.add("flip");
+  this.classList.add("flip", "card-flip");
 
   if (!hasFlippedCard) {
     // first click
@@ -47,7 +47,7 @@ function flipCard() {
       if (numMatches === cards.length / 2) {
         // all cards have been matched
         console.log("invoked");
-        clearInterval(timer);
+        stopTimer();
         victorySound.play();
       }
     } else {
@@ -119,6 +119,7 @@ function startTimer() {
 }
 function stopTimer() {
   clearInterval(timer);
+  console.log(setInterval);
 }
 
 (function shuffle() {

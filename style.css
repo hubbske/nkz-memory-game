@@ -81,3 +81,18 @@ h1 {
   display: block;
   margin: 0 auto;
 }
+
+.card-flip {
+  animation-name: flip;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes flip {
+  from {
+    transform: rotateY(0);
+  }
+  to {
+    transform: rotateY(180deg);
+  }
+}
