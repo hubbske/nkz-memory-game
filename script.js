@@ -3,6 +3,7 @@ let timerEl = document.querySelector("#timer");
 let playAgainBtn = document.querySelector("#play-again");
 
 const flipSound = new Audio("sounds/fist-punch-or-kick-7171.mp3");
+const rickSound = new Audio("sounds/Mzg1ODMxNTIzMzg1ODM3_JzthsfvUY24.mp3");
 const matchSound = new Audio("sounds/yay-6120.mp3");
 const victorySound = new Audio("victory.mp3");
 const failureSound = new Audio("failure.mp3");
@@ -50,6 +51,7 @@ function flipCard() {
         stopTimer();
         gameWon = true;
         // victorySound.play();
+        rickSound.play();
         rickRoll();
       }
     } else {
@@ -92,7 +94,7 @@ function disableCards() {
 function rickRoll() {
   const modal = document.createElement("div");
   modal.innerHTML = `
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/oHg5SJYRHA0?autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <img src="rick-roll.gif" alt="Rick Roll GIF">
   `;
   modal.style.position = "fixed";
   modal.style.top = "0";
@@ -104,7 +106,6 @@ function rickRoll() {
   modal.style.display = "flex";
   modal.style.alignItems = "center";
   modal.style.justifyContent = "center";
-  modal.querySelector("iframe").style.zIndex = "10000";
   document.body.appendChild(modal);
 }
 
