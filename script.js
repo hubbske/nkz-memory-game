@@ -15,6 +15,7 @@ let timeLimit = 60; // 30 seconds time limit
 let timeRemaining = timeLimit;
 let timer;
 let gameStarted = false;
+let gameWon = false;
 
 function flipCard() {
   if (lockBoard) return;
@@ -46,8 +47,8 @@ function flipCard() {
 
       if (numMatches === cards.length / 2) {
         // all cards have been matched
-        console.log("invoked");
         stopTimer();
+        gameWon = true;
         victorySound.play();
       }
     } else {
@@ -109,11 +110,16 @@ function startTimer() {
     document.getElementById("timer").textContent = `Time: ${timeRemaining}s`;
 
     if (timeRemaining <= 0) {
-      // time's up
-      clearInterval(timer);
-      document.getElementById("timer").textContent = "Time: 0s";
-      lockBoard = true;
-      failureSound.play();
+      if (gameWon == false) {
+        // time's up
+        clearInterval(timer);
+        document.getElementById("timer").textContent = "Time: 0s";
+        lockBoard = true;
+        failureSound.play();
+      } else {
+        clearInterval(timer);
+        document.getElementById("timer").textContent = "OMGARD u won";
+      }
     }
   }, 1000);
 }
