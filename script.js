@@ -49,7 +49,8 @@ function flipCard() {
         // all cards have been matched
         stopTimer();
         gameWon = true;
-        victorySound.play();
+        // victorySound.play();
+        rickRoll();
       }
     } else {
       // cards don't match
@@ -86,6 +87,25 @@ function disableCards() {
   matchSound.play(); // Play match sound effect
 
   resetBoard();
+}
+
+function rickRoll() {
+  const modal = document.createElement("div");
+  modal.innerHTML = `
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/oHg5SJYRHA0?autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  `;
+  modal.style.position = "fixed";
+  modal.style.top = "0";
+  modal.style.left = "0";
+  modal.style.width = "100%";
+  modal.style.height = "100%";
+  modal.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+  modal.style.zIndex = "9999";
+  modal.style.display = "flex";
+  modal.style.alignItems = "center";
+  modal.style.justifyContent = "center";
+  modal.querySelector("iframe").style.zIndex = "10000";
+  document.body.appendChild(modal);
 }
 
 function unflipCards() {
